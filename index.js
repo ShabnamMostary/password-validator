@@ -1,6 +1,6 @@
 function validatePass(password) {
   var l = password.length
-  var spChars = '~`!#$%^&*+=-[]\\\';,/{}|":<>?'
+  var spChars = '~`!@#$%^&*+=-[]\\\';,/{}|":<>?'
   var lengthCheck = false
   var numberCheck = false
   var specialCharCheck = false
@@ -15,22 +15,18 @@ function validatePass(password) {
     if (password[i] >= '0' && password[i] <= '9') {
       numberCheck = true
     }
-  }
-
-
-  for (let i = 0; i < l; i++) {
     if (spChars.indexOf(password[i]) >= 0) {
       specialCharCheck = true
     }
-  }
 
-  for (let i = 0; i < l; i++) {
-    if (password[i] === password[i].toUpperCase() && isNaN(password[i]) === true && spChars.indexOf(password[i]) < 0) {
+    // determine if password[i] is a character 
+    var isChar = password[i].toUpperCase() !== password[i].toLowerCase()
+
+    if (password[i] === password[i].toUpperCase() && isChar) {
       upperCaseCheck = true
     }
-  }
-  for (let i = 0; i < l; i++) {
-    if (password[i] === password[i].toLowerCase() && isNaN(password[i]) === true && spChars.indexOf(password[i]) < 0) {
+
+    if (password[i] === password[i].toLowerCase() && isChar) {
       lowerCaseCheck = true
     }
   }
