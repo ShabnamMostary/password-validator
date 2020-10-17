@@ -24,7 +24,16 @@ function validatePass(password) {
     }
   }
 
-
+  for (let i = 0; i < l; i++) {
+    if (password[i] === password[i].toUpperCase() && isNaN(password[i]) === true && spChars.indexOf(password[i]) < 0) {
+      upperCaseCheck = true
+    }
+  }
+  for (let i = 0; i < l; i++) {
+    if (password[i] === password[i].toLowerCase() && isNaN(password[i]) === true && spChars.indexOf(password[i]) < 0) {
+      lowerCaseCheck = true
+    }
+  }
 
   return (lengthCheck && numberCheck && upperCaseCheck && lowerCaseCheck && specialCharCheck)
 }
